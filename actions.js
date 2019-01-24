@@ -1,5 +1,6 @@
 import { FETCHING_DATA, FETCHING_DATA_SUCCESS, FETCHING_DATA_FAILURE } from './constants';
-import getPeople from './api';
+// import getPeople from './api';
+import getAlert from './api';
 
 export function getData() {
   return {
@@ -23,7 +24,7 @@ export function getDataFailure() {
 export function fetchData() {
   return (dispatch) => {
     dispatch(getData());
-    getPeople()
+    getAlert()
       .then((data) => {
         dispatch(getDataSuccess(data));
       })

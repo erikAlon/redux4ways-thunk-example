@@ -4,9 +4,36 @@ import { TouchableHighlight, View, Text, StyleSheet } from 'react-native';
 import { connect } from 'react-redux';
 import { fetchData } from './actions';
 
-const Appers = (props) => {
-  const { container, text, button, buttonText, mainContent } = styles;
+// const ReduxExample = (props) => {
+//   const { container, text, button, buttonText, mainContent } = styles;
 
+//   return (
+//     <View style={container}>
+//       <Text style={text}>Redux Examples</Text>
+
+//       <TouchableHighlight style={button} onPress={() => props.fetchData()}>
+//         <Text style={buttonText}>Load Data</Text>
+//       </TouchableHighlight>
+
+//       <View style={mainContent}>
+//         {props.appData.isFetching && <Text>Loading</Text>}
+//         {props.appData.data.length
+//           ? props.appData.data.map((person, index) => {
+//               return (
+//                 <View key={index}>
+//                   <Text>Name: {person.name}</Text>
+//                   <Text>Age: {person.age}</Text>
+//                 </View>
+//               );
+//             })
+//           : null}
+//       </View>
+//     </View>
+//   );
+// };
+
+const ReduxExample = (props) => {
+  const { container, text, button, buttonText, mainContent } = styles;
   return (
     <View style={container}>
       <Text style={text}>Redux Examples</Text>
@@ -17,16 +44,7 @@ const Appers = (props) => {
 
       <View style={mainContent}>
         {props.appData.isFetching && <Text>Loading</Text>}
-        {props.appData.data.length
-          ? props.appData.data.map((person, index) => {
-              return (
-                <View key={index}>
-                  <Text>Name: {person.name}</Text>
-                  <Text>Age: {person.age}</Text>
-                </View>
-              );
-            })
-          : null}
+        {props.appData.dataFetched ? <Text>Message: {props.appData.data}</Text> : null}
       </View>
     </View>
   );
@@ -66,4 +84,4 @@ function mapDispatchToProps(dispatch) {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Appers);
+)(ReduxExample);
